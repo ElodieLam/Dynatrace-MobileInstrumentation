@@ -40,10 +40,10 @@ public class MainActivity extends AppCompatActivity
 
     private TextView tvServerResponse;
 
-    //A modifier: l'adresse de votre service Azure
-    private static final String SERVER = "http://168.62.186.148/"; //"http://13.73.138.121/";
+    //Change the Kubernetes IP adress
+    private static final String SERVER = "http://168.62.186.148/";
 
-    //A modifier: votre nom d'utilisateur
+    //Set an user name
     private static final String userId = "android.studio@android.com";
 
     @Override
@@ -69,11 +69,7 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        //---------------Start the OneAgent
-        Dynatrace.startup(this, new DynatraceConfigurationBuilder("b763f69a-f01d-4b58-b914-18fcc40740ae", "https://bf89185syo.bf-sprint.dynatracelabs.com/mbeacon")
-                //Here you can add configurations
-                .buildConfiguration());
-        //---------------
+        //TODO 1 - Start the OneAgent
 
         tvServerResponse = findViewById(R.id.textView);
         Button contactServerButton = findViewById(R.id.btn_get);
@@ -87,71 +83,70 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    //Bouton Get Current Score
+    //Button Get Current Score
     View.OnClickListener onSendClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
-            //---------------Début de la User action
-            DTXAction clickAction = Dynatrace.enterAction("Click on GET CURRENT SCORE button");
+            //TODO 2 - Start the User action
 
-            //Interoge le serveur et récupère le score actuel
             HttpGetRequest request = new HttpGetRequest();
             request.execute();
 
-            //---------------Identification de l'utilisateur
-            Dynatrace.identifyUser(userId);
+            //TODO 3 - Identify the user
 
-            //---------------Fin de la User action
-            clickAction.leaveAction();
+            //TODO 4 - End the User action
+
+
         }
     };
 
-    //Bouton CATS
+    //Button CATS
     View.OnClickListener onCatsClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
-            //---------------Début de la User action
-            DTXAction clickAction = Dynatrace.enterAction("Click on CATS button");
+            //TODO 5 - Start the User action
 
-            /* En chantier
+
+            /* In progress
             HttpPostRequest request = new HttpPostRequest();
             request.execute();
             Log.i("CATS", "Click on Cats");
             */
 
-            //---------------Identification de l'utilisateur
-            Dynatrace.identifyUser(userId);
+            //TODO 6 - Identify the user
 
-            //---------------Fin de la User action
-            clickAction.leaveAction();
-        }
+
+            //TODO 7 - End the User action
+
+}
     };
 
-    //Bouton DOGS
+    //Button DOGS
     View.OnClickListener onDogsClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
-            //---------------Début de la User action
-            DTXAction clickAction = Dynatrace.enterAction("Click on DOGS button");
+            //TODO 8 - Start the User action
 
-            /* En chantier
+
+            /* In progress
             HttpPostRequest request = new HttpPostRequest();
             request.execute();
             Log.i("CATS", "Click on Dogs");
             */
 
-            //---------------Identification de l'utilisateur
-            Dynatrace.identifyUser(userId);
+            //TODO 9 - Identify the user
 
-            //---------------Fin de la User action
-            clickAction.leaveAction();
+
+            //TODO 10 - End the User action
+
+
         }
     };
 
-    //Méthode Get pour récupérer le score
+    //Get method to get the current score
     public class HttpGetRequest extends AsyncTask<Void, Void, String> {
 
         static final String REQUEST_METHOD = "GET";
@@ -205,7 +200,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    //En chantier: Méthode Post pour mettre à jour le score
+    //In progress: Post method to update the score
     public class HttpPostRequest extends AsyncTask<Void, Void, String> {
 
         static final String REQUEST_METHOD = "POST";
