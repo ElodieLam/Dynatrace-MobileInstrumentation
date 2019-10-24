@@ -7,7 +7,7 @@
 3.	Once you've provided a name for your app, click Create mobile app. This step creates a new mobile app within Dynatrace.
 
 Choose Google Android / Command line
-Copy the value
+And copy the value:
 •	DTXapplicationID 
 •	DTXbeaconURL
 
@@ -62,5 +62,5 @@ Dynatrace.identifyUser(userId);
 clickAction.leaveAction();
 
 
-Run the application and create activity.
+### Run the application and create activity.
 
